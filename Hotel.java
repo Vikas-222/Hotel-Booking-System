@@ -1,8 +1,9 @@
 package com.company;
 
-import java.util.ArrayList;
+import com.company.room.Rooms;
+import com.company.user.Customer;
+
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class Hotel {

@@ -19,6 +19,9 @@ public class DoubleBed extends Rooms {
     }
 
     @Override
-    public float calculateTotal() {return (getRoomPrice() + getServiceCharge() + getGymCharge()) * getGst();
+    public float calculateTotal() {
+        float amt = (getRoomPrice() + getServiceCharge() + getGymCharge());
+        float gstamt = (amt * getGst());
+        return amt + gstamt;
     }
 }

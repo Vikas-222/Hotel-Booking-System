@@ -1,5 +1,8 @@
 package com.company;
 
+import com.company.room.Rooms;
+import com.company.user.Customer;
+
 import java.util.*;
 
 public class Booking {
@@ -52,6 +55,7 @@ public class Booking {
             int index = (int) (Math.random() * availableRoom.size());
             if (availableRoom.get(index).getCapacity() < guest) {
                 bookRoom(from, to, guest);
+
             } else {
                 System.out.println("Your Room Number is: "
                         + availableRoom.get(index));

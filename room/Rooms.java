@@ -59,7 +59,8 @@ public abstract class Rooms {
     }
 
     public float calculateTotal() {
-        return (roomPrice + serviceCharge) * getGst();
+        float gstamt = (getRoomPrice() + getServiceCharge()) * getGst();
+        return (getRoomPrice() + getServiceCharge()) + gstamt;
     }
 
     public boolean getRoomStatus() {

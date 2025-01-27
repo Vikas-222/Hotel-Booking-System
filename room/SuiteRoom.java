@@ -29,6 +29,8 @@ public class SuiteRoom extends Rooms {
 
     @Override
     public float calculateTotal() {
-        return (getRoomPrice() + getServiceCharge() + getGymCharge() + getSwimmingPoolCharge()) * getGst();
+        float amt = (getRoomPrice() + getServiceCharge() + getGymCharge() + getSwimmingPoolCharge());
+        float gstamt = (float) (amt * 0.15);
+        return amt + gstamt;
     }
 }
