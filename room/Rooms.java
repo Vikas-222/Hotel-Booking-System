@@ -1,6 +1,7 @@
 package com.company.room;
 
 public abstract class Rooms {
+
     private String roomNumber;
     private float roomPrice;
     private int capacity;
@@ -9,53 +10,33 @@ public abstract class Rooms {
     private boolean roomStatus;
     private String roomType;
 
-    public Rooms(String roomNumber, float price, int capacity, float serviceCharge, boolean status, String roomType) {
-        this.roomNumber = roomNumber;
-        this.roomPrice = price;
-        this.capacity = capacity;
-        this.serviceCharge = serviceCharge;
-        this.roomStatus = status;
-        this.roomType = roomType;
+    public Rooms(Builder<?> builder) {
+        this.roomNumber = builder.roomNumber;
+        this.roomPrice = builder.price;
+        this.capacity = builder.capacity;
+        this.serviceCharge = builder.serviceCharge;
+        this.roomStatus = builder.roomStatus;
+        this.roomType = builder.roomType;
     }
 
     public String getRoomNumber() {
         return roomNumber;
     }
 
-    public void setRoomNumber(String roomNumber) {
-        this.roomNumber = roomNumber;
-    }
-
     public float getRoomPrice() {
         return roomPrice;
-    }
-
-    public void setRoomPrice(float price) {
-        this.roomPrice = price;
     }
 
     public int getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
-    }
-
     public float getGst() {
         return gst;
     }
 
-    public void setGst(float gst) {
-        this.gst = gst;
-    }
-
     public float getServiceCharge() {
         return serviceCharge;
-    }
-
-    public void setServiceCharge(float serviceCharge) {
-        this.serviceCharge = serviceCharge;
     }
 
     public float calculateTotal() {
@@ -67,8 +48,63 @@ public abstract class Rooms {
         return roomStatus;
     }
 
-    public void setRoomStatus(boolean roomStatus) {
-        this.roomStatus = roomStatus;
+    public String getRoomType() {
+        return roomType;
+    }
+
+    public void setRoomStatus(boolean b) {
+        this.roomStatus = b;
+    }
+
+
+    public static abstract class Builder<T extends Builder<T>> {
+
+        private float price;
+        private String roomNumber;
+        private int capacity;
+        private float gst = 0.15f;
+        private float serviceCharge;
+        private boolean roomStatus;
+        private String roomType;
+
+
+        public T setRoomNumber(String roomNumber) {
+            this.roomNumber = roomNumber;
+            return self();
+        }
+
+        public T setRoomPrice(float price) {
+            this.price = price;
+            return self();
+        }
+
+        public T setCapacity(int capacity) {
+            this.capacity = capacity;
+            return self();
+        }
+
+        public T setGst(float gst) {
+            this.gst = gst;
+            return self();
+        }
+
+        public T setServiceCharge(float serviceCharge) {
+            this.serviceCharge = serviceCharge;
+            return self();
+        }
+
+        public T setRoomType(String roomType) {
+            this.roomType = roomType;
+            return self();
+        }
+
+        public T setRoomStatus(boolean roomStatus) {
+            this.roomStatus = roomStatus;
+            return self();
+        }
+
+        public abstract Rooms build();
+        protected abstract T self();
     }
 
     @Override

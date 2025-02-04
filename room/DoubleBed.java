@@ -6,16 +6,35 @@ public class DoubleBed extends Rooms {
 
     private float gymCharge = 500.0f;
 
-    public DoubleBed(String roomNumber, float price, int capacity, float serviceCharge, boolean status, String roomType) {
-        super(roomNumber, price, capacity, serviceCharge, status, roomType);
+    public DoubleBed(Builder builder) {
+        super(builder);
     }
 
     public float getGymCharge() {
         return gymCharge;
     }
 
-    public void setGymCharge(float gymCharge) {
-        this.gymCharge = gymCharge;
+
+
+
+    //Builder
+    public static class DoubleBedBuilder extends Rooms.Builder<DoubleBed.DoubleBedBuilder> {
+
+        private float gymCharge = 500.0f;
+
+        public DoubleBed build() {
+            return new DoubleBed(this);
+        }
+
+        @Override
+        protected DoubleBedBuilder self() {
+            return this;
+        }
+
+        public DoubleBedBuilder setGymCharge(float gymCharge) {
+            this.gymCharge = gymCharge;
+            return self();
+        }
     }
 
     @Override
@@ -24,4 +43,5 @@ public class DoubleBed extends Rooms {
         float gstamt = (amt * getGst());
         return amt + gstamt;
     }
+
 }

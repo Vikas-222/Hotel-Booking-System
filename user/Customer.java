@@ -1,12 +1,24 @@
 package com.company.user;
 
 
-import com.company.user.Users;
-
 public class Customer extends Users {
 
-    public Customer(int userid, String username, String email, int contact, String role, String gender) {
-        super(userid, username, email, contact, role, gender);
+    public Customer(UserBuilder builder) {
+        super(builder);
+    }
+
+    public static class CustomerBuilder extends Users.UserBuilder<CustomerBuilder> {
+
+
+        @Override
+        public CustomerBuilder self() {
+            return this;
+        }
+
+        @Override
+        public Customer build() {
+            return new Customer(this);
+        }
     }
 
     @Override

@@ -1,12 +1,23 @@
 package com.company.room;
 
-import com.company.room.Rooms;
-
 public class SingleBed extends Rooms {
 
+    private SingleBed(Builder builder) {
+        super(builder);
+    }
 
-    public SingleBed(String roomNumber, float price, int capacity, float serviceCharge, boolean status, String roomType) {
-        super(roomNumber, price, capacity, serviceCharge, status, roomType);
+
+    //builder
+    public static class SingleBedBuilder extends Rooms.Builder<SingleBedBuilder> {
+
+        public SingleBed build() {
+            return new SingleBed(this);
+        }
+
+        @Override
+        protected SingleBedBuilder self() {
+            return this;
+        }
     }
 
 }
